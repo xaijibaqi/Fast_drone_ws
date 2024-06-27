@@ -1,0 +1,39 @@
+sudo chmod 777 /dev/ttyACM0
+./ready.sh
+./imu.sh
+关窗口
+
+./rsp4.sh
+rostopic echo /vins_fusion/imu_propagate
+
+做法，确认无误，ctrl c 打杆
+
+./run.sh
+
+./exp.sh
+
+./rviz.sh
+
+source devel/setup.bash
+
+准备起飞
+sh shfiles/takeoff.sh
+
+roslaunch detector detect.launch 	
+
+
+
+realsense-viewer
+
+VINS外参精确自标定
+sh shfiles/rspx4.sh
+rostopic echo /vins_fusion/imu_propagate
+拿起飞机沿着场地尽量缓慢地行走，场地内光照变化不要太大，灯光不要太暗，不要使用会频
+闪的光源，尽量多放些杂物来增加VINS用于匹配的特征点
+把 vins_output/extrinsic_parameter.txt 里的内容替换到 fast-drone-250.yaml 的
+body_T_cam0 和 body_T_cam1
+重复上述操作直到走几圈后VINS的里程计数据偏差收敛到满意值（一般在0.3米内）
+建图模块验证
+sh shfiles/rspx4.sh
+roslaunch ego_planner single_run_in_exp.launch
+进入远程桌面 roslaunch ego_planner rviz.launch

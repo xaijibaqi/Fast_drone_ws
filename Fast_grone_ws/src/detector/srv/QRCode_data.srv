@@ -1,0 +1,14 @@
+---
+#是否检测到二维码
+bool flag
+#二维码内容的第一个数字
+int8 num1
+#二维码内容的第二个数字
+int8 num2
+#二维码内容的第三个数字
+int8 num3
+#左右,Ture为左,False为右
+bool left_or_right
+#二维码中心的像素坐标
+int16 x
+int16 y

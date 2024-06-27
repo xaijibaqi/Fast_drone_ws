@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="detector" type="plan.py" name="detect_node" output="screen"/>
+</launch>

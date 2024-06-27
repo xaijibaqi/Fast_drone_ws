@@ -1,0 +1,8 @@
+---
+#是否检测到数字
+bool flag
+#数字
+int8 num
+#数字中心的像素坐标
+int16 x
+int16 y
